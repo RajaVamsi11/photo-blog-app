@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetupActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/setupToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="#ffffff">
+
+    </android.support.v7.widget.Toolbar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/setup_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/default_image"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+
+    <EditText
+        android:id="@+id/setup_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setup_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:hint="Your name..."
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/setup_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setup_name"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="15dp"
+        android:text="Save Account Settings"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <ProgressBar
+        android:id="@+id/setup_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="40dp"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>
