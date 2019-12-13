@@ -1,4 +1,4 @@
-package com.example.vamsi.blogpost;
+package com.example.vamsi.blogpost.Model;
 
 import com.google.firebase.firestore.Exclude;
 

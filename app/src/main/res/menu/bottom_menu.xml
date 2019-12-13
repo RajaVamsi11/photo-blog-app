@@ -11,4 +11,8 @@
         android:id="@+id/bottom_action_account"
         android:icon="@drawable/baseline_person_black_24dp"
         android:title="Account" />
+    <item
+        android:id="@+id/bottom_action_notif"
+        android:icon="@drawable/baseline_notifications_black_24dp"
+        android:title="Notifications" />
 </menu>

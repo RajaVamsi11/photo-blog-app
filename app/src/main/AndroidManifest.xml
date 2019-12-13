@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View_Controller.CommentsActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".View_Controller.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".View_Controller.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SetupActivity" />
+        <activity android:name=".View_Controller.RegisterActivity" />
+        <activity android:name=".View_Controller.SetupActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".PostActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".View_Controller.PostActivity"
+            android:parentActivityName=".View_Controller.MainActivity" />
     </application>
 
 </manifest>

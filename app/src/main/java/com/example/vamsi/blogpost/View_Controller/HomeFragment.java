@@ -1,4 +1,4 @@
-package com.example.vamsi.blogpost;
+package com.example.vamsi.blogpost.View_Controller;
 
 
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.example.vamsi.blogpost.Model.BlogPost;
+import com.example.vamsi.blogpost.Model.BlogRecyclerAdapter;
+import com.example.vamsi.blogpost.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;

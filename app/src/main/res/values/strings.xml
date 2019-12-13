@@ -3,4 +3,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notifications_feature_yet_to_be_implemented">Notifications feature yet to be implemented</string>
+    <string name="account_details_will_be_displayed_here">Account Details will be displayed here</string>
 </resources>

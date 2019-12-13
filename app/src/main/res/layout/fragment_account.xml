@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountFragment">
+    tools:context=".View_Controller.AccountFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -12,6 +12,6 @@
         android:textSize="16sp"
         android:textColor="#000000"
         android:layout_height="match_parent"
-        android:text="Account Details will be displayed here" />
+        android:text="@string/account_details_will_be_displayed_here" />
 
 </FrameLayout>

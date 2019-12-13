@@ -1,8 +1,8 @@
-package com.example.vamsi.blogpost;
+package com.example.vamsi.blogpost.Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.constraint.Placeholder;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.vamsi.blogpost.View_Controller.CommentsActivity;
+import com.example.vamsi.blogpost.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +25,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -90,8 +91,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(millisecond));
         viewHolder.setDate(dateString);
 
-       /* //Get Likes Count
-        firebaseFirestore.collection("Posts/"+blogPostId+"/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //Get Likes Count
+        /*firebaseFirestore.collection("Posts/"+blogPostId+"/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
@@ -104,18 +105,47 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                 }
             }
         });*/
+        firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                if (documentSnapshots != null) {
+                    if (!documentSnapshots.isEmpty()) {
+
+                        viewHolder.updateLikesCount(documentSnapshots.size() + "");
+                    } else {
+
+                        viewHolder.updateLikesCount("0");
+                    }
+                }
+            }
+        });
+        //Get Comments Count
+        firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                if (documentSnapshots != null) {
+                    if (!documentSnapshots.isEmpty()) {
+
+                        viewHolder.updateCommentsCount(documentSnapshots.size() + "");
+                    } else {
+
+                        viewHolder.updateCommentsCount("0");
+                    }
+                }
+            }
+        });
 
         //Get Likes
         firebaseFirestore.collection("Posts/"+blogPostId+"/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                if (documentSnapshot!= null) {
+                    if (documentSnapshot.exists()) {
 
-                if(documentSnapshot.exists()){
-
-                    viewHolder.blogLikeBtn.setImageResource(R.drawable.like_accent);
-                }
-                else{
-                    viewHolder.blogLikeBtn.setImageResource(R.drawable.like_grey);
+                        viewHolder.blogLikeBtn.setImageResource(R.drawable.like_accent);
+                    } else {
+                        viewHolder.blogLikeBtn.setImageResource(R.drawable.like_grey);
+                    }
                 }
             }
         });
@@ -145,6 +175,18 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+        //Comments feature
+        viewHolder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent commentIntent = new Intent(context, CommentsActivity.class);
+                commentIntent.putExtra("blog_post_id", blogPostId);
+                context.startActivity(commentIntent);
+
+            }
+        });
+
 
 
     }
@@ -163,7 +205,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         public TextView blogUserName;
         public CircleImageView blogUserImage;
         public ImageView blogLikeBtn;
-        public TextView blogLikeCount;
+        public TextView blogLikeCount, blogCommentCount;
+        private ImageView blogCommentBtn;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -171,6 +214,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             mView = itemView;
             blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
             blogLikeCount = mView.findViewById(R.id.blog_like_counter);
+            blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
         }
         public void setDescText(String descText){
             descView= mView.findViewById(R.id.blog_desc);
@@ -204,10 +248,13 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             Glide.with(context).applyDefaultRequestOptions(placeholderOption).load(image).into(blogUserImage);
 
         }
-        public void updateLikesCount(int count){
+        public void updateLikesCount(String count) {
             blogLikeCount = mView.findViewById(R.id.blog_like_counter);
-            blogLikeCount.setText(count);
+            blogLikeCount.setText(count + " Likes");
         }
-
+        public void updateCommentsCount(String count) {
+            blogCommentCount = mView.findViewById(R.id.blog_comment_count);
+            blogCommentCount.setText(count + " Comments");
+        }
     }
 }

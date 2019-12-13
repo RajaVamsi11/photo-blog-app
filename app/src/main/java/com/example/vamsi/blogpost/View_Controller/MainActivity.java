@@ -1,4 +1,4 @@
-package com.example.vamsi.blogpost;
+package com.example.vamsi.blogpost.View_Controller;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.vamsi.blogpost.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.bottom_action_home:
                             replaceFragment(homeFragment);
                             return true;
-                        /*case R.id.bottom_action_notif:
+                        case R.id.bottom_action_notif:
                             replaceFragment(notificationFragment);
-                            return true;*/
+                            return true;
                         case R.id.bottom_action_account:
                             replaceFragment(accountFragment);
                             return true;
