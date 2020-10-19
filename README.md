@@ -1,4 +1,9 @@
-# Photo Blog App
+# Photo Blog App 
+[![GitHub issues](https://img.shields.io/github/issues/RajaVamsi11/photo-blog-app)](https://github.com/RajaVamsi11/photo-blog-app/issues)
+[![GitHub forks](https://img.shields.io/github/forks/RajaVamsi11/photo-blog-app)](https://github.com/RajaVamsi11/photo-blog-app/network)
+[![GitHub stars](https://img.shields.io/github/stars/RajaVamsi11/photo-blog-app)](https://github.com/RajaVamsi11/photo-blog-app/stargazers)
+[![GitHub license](https://img.shields.io/github/license/RajaVamsi11/photo-blog-app)](https://github.com/RajaVamsi11/photo-blog-app)
+[![Twitter](https://img.shields.io/twitter/url?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FRajaVamsi11%2Fphoto-blog-app)
 
 Photo Blog App is an Android application which displays the blog posts of all users who have posted using this app.This app
 uses <a href='https://firebase.google.com/'>Firebase</a> as backend to store the blogposts that are posted by users. It uses 
