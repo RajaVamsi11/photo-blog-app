@@ -24,5 +24,3 @@ application using Firebase Authentication.
 - Glide
 - Circle Image View
 - Android Image Cropper
-
-## One can find apk file of the app <a href='https://drive.google.com/file/d/1_hrNUjAWjTUJ3lHU0S9HiFwMEql4mEG7/view'>here</a>.
